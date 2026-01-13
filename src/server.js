@@ -4,11 +4,19 @@ require("dotenv").config();
 
 const connectDB = require("./config/db");
 const eventRoutes = require("./routes/eventRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const bookingsRoutes = require("./routes/bookingsRoutes");
+
+
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Booking APIs
+app.use("/book", bookingRoutes);
+app.use("/bookings", bookingsRoutes);
+
 
 app.get("/", (req, res) => {
   res.json({ message: "Ticket Booking API running 🚀" });
